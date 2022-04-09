@@ -1,0 +1,68 @@
+❯ time python3 categorize_data.py                                                                                                                                                                             ─╯
+File: fluidanimate___1___5___in_35K.fluid.csv
+Counter: 40010 / 40011 Branches 5977
+
+total instructions:  40011
+data-flow: 12760 => 31.89122991177426 %
+control-flow: 27251 => 68.10877008822574 %
+crossovers: 9706
+crossovers/control-flow: 35.61704157645591 %
+
+=============================
+
+File: bodytrack___sequenceB_1___4___1___1000___5___0___1.csv
+Counter: 76734 / 76735 Branches 10016
+
+total instructions:  76735
+data-flow: 28989 => 37.778067374731215 %
+control-flow: 47746 => 62.221932625268785 %
+crossovers: 20468
+crossovers/control-flow: 42.86851254555356 %
+
+=============================
+
+File: cholesky___-p1_______tk14.0.csv
+Counter: 36936 / 36937 Branches 5204
+
+total instructions:  36937
+data-flow: 12321 => 33.35679670790806 %
+control-flow: 24616 => 66.64320329209194 %
+crossovers: 9016
+crossovers/control-flow: 36.62658433539161 %
+
+=============================
+
+File: fft___-m16___-p1___Ferret_binary_output.txt.csv
+Counter: 23942 / 23943 Branches 3587
+
+total instructions:  23943
+data-flow: 7479 => 31.236687131938353 %
+control-flow: 16464 => 68.76331286806165 %
+crossovers: 5769
+crossovers/control-flow: 35.04008746355685 %
+
+=============================
+
+File: ferret___corel___lsh___queries___10___20___1___Ferret_binary_output.txt.csv
+Counter: 73426 / 73427 Branches 9432
+
+total instructions:  73427
+data-flow: 28848 => 39.28800032685525 %
+control-flow: 44579 => 60.71199967314475 %
+crossovers: 19510
+crossovers/control-flow: 43.76500145808564 %
+
+=============================
+
+File: blackscholes___1___in_4K.txt___Black-Scholes_binary_output.txt.csv
+Counter: 28280 / 28281 Branches 4528
+
+total instructions:  28281
+data-flow: 8351 => 29.52865881687352 %
+control-flow: 19930 => 70.47134118312648 %
+crossovers: 6767
+crossovers/control-flow: 33.95383843452082 %
+
+=============================
+
+python3 categorize_data.py  35.76s user 1.34s system 103% cpu 35.954 total

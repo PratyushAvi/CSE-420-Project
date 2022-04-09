@@ -11,7 +11,7 @@ import collections
 import json
 
 
-directory = '/Users/pratyushavi/Developer/CSE/CSE 420/Project/results_Wed_Apr__6_14:10:42_2022'
+directory = 'results_Wed_Apr__6_14:10:42_2022'
 
 for filename in os.listdir(directory):
     df = pd.read_csv(os.path.join(directory, filename))
@@ -58,7 +58,6 @@ for filename in os.listdir(directory):
             counter += 1
             # if counter > 3:
             # break  
-    print("\nDone")
 
     pos = collections.defaultdict(lambda: 0)
 
@@ -74,9 +73,9 @@ for filename in os.listdir(directory):
         else:
             pos[i] = (0, i)
             left_counter += 1
-    print('total instructions: ', len(df))
-    print('left:', left_counter, '=>',100 * left_counter/len(df), '%')
-    print('right:', right_counter, '=>', 100 * right_counter/len(df), '%')
+    print('\n\ntotal instructions: ', len(df))
+    print('data-flow:', left_counter, '=>',100 * left_counter/len(df), '%')
+    print('control-flow:', right_counter, '=>', 100 * right_counter/len(df), '%')
     # print(x,y)
     # fig = px.scatter(x=x, y=y, text=y)
     # fig.show()
@@ -104,6 +103,8 @@ for filename in os.listdir(directory):
             if pos[n][0] != pos[e][0]:
                 counter += 1
     print('crossovers:', counter)
+    print('crossovers/control-flow:', counter/right_counter*100, '%')
+
     # edge_trace = go.Scatter(
     #     x=e_x, y=e_y,
     #     line=dict(width=0.5, color='#888'),
