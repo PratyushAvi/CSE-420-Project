@@ -13,9 +13,6 @@ CROSSOVERS = 5
 
 
 files = list(df.columns)[1:]
-# print(df)
-# print(files)
-
 data = collections.defaultdict(lambda: [])
 
 for f in files:
@@ -41,36 +38,26 @@ for f in files:
     data['crossovers'].extend(crossovers)
     data['crossovers/control-flow'].extend(cross_div_control)
 
-    # for i in range(len(df[f][THRESHOLD])):
-    #     data['filename'].append(f)
-    #     data['threshold'].append(int(df[f][THRESHOLD][i]))
-    #     data['data-flow'].append(int(df[f][DATA_FLOW][i]))
-    #     data['control-flow'].append(int(df[f][CONTROL_FLOW][i]))
-    #     data['data-flow-percentage'].append(float(df[f][DATA_FLOW_PERCENTAGE][i]))
-    #     data['control-flow-percentage'].append(float(df[f][CONTROL_FLOW_PERCENTAGE][i]))
-    #     data['crossovers'].append(int(df[f][CROSSOVERS][i]))
-    #     data['crossovers/control-flow'].append(int(df[f][CROSSOVERS][i])/int(df[f][CONTROL_FLOW][i]))
-
 data_frame = pd.DataFrame.from_dict(data)
 print(data_frame)
 data_frame.to_csv('findings/threshold-cleaned.csv')
 
-# fig = px.line(data_frame, x='threshold', y='control-flow-percentage', 
-#         color='filename', markers=True, symbol='filename'
-#     )
-# fig.show()
-# fig.write_image('findings/control-flow-vs-threshold.svg')
+fig = px.line(data_frame, x='threshold', y='control-flow-percentage', 
+        color='filename', markers=True, symbol='filename'
+    )
+fig.show()
+fig.write_image('findings/control-flow-vs-threshold.svg')
 
-# fig = px.line(data_frame, x='threshold', y='crossovers/control-flow', 
-#         color='filename', markers=True, symbol='filename'
-#     )
-# fig.show()
-# fig.write_image('findings/crossover-percentage-vs-threshold.svg')
+fig = px.line(data_frame, x='threshold', y='crossovers/control-flow', 
+        color='filename', markers=True, symbol='filename'
+    )
+fig.show()
+fig.write_image('findings/crossover-percentage-vs-threshold.svg')
 
-# fig = px.line(data_frame, x='threshold', y='crossovers', 
-#         color='filename', markers=True, symbol='filename'
-#     )
-# fig.show()
-# fig.write_image('findings/crossovers-vs-threshold.svg')
+fig = px.line(data_frame, x='threshold', y='crossovers', 
+        color='filename', markers=True, symbol='filename'
+    )
+fig.show()
+fig.write_image('findings/crossovers-vs-threshold.svg')
 
     
