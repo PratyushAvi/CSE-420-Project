@@ -13,6 +13,8 @@ import time
 
 
 directory = 'results_Wed_Apr__6_14:10:42_2022'
+
+# Dictionary to hold data about different thresholds
 thresholded_data = collections.defaultdict(lambda: collections.defaultdict(lambda: []))
 
 for filename in os.listdir(directory):
@@ -28,6 +30,9 @@ for filename in os.listdir(directory):
 
     counter = 0
 
+    #################################################
+    #   Build Adjacency List and un-thresholded graph
+    #################################################
     for i, ins in df.iterrows():
         print('Counter:', i, '/',  len(df), 'Branches', counter,end='\r')
         writeRegs = [int(val) for val in ins['Write_Registers'].replace('W[', '').replace(']', '').split(' ') if val]
@@ -80,12 +85,20 @@ for filename in os.listdir(directory):
             if pos[n][0] != pos[e][0]:
                 crossovers += 1
     
+    # Threshold = 0 => GOLD. No threshold applied
     thresholded_data[filename]['threshold'].append(0)
     thresholded_data[filename]['data-flow'].append(left_counter)
     thresholded_data[filename]['control-flow'].append(right_counter)
     thresholded_data[filename]['data-flow-percentage'].append(left_counter/len(df))
     thresholded_data[filename]['control-flow-percentage'].append(right_counter/len(df))
     thresholded_data[filename]['crossovers'].append(crossovers)
+
+    ###################################################################################################
+    
+    #################################################
+    #   Build thresholded graphs from adjacency list
+    #################################################
+
     
     MAX_THRESHOLD = 100
 
@@ -94,6 +107,8 @@ for filename in os.listdir(directory):
     for t in range(1, MAX_THRESHOLD+1):
         print('Threshold %d' % t, end='')
         temp_marked = set()
+
+        # re-mark nodes that form dependencies for a given branch instruction
         for ins in branch_ins:
             q = [ins]
             while q:
@@ -108,6 +123,7 @@ for filename in os.listdir(directory):
 
         pos = collections.defaultdict(lambda: 0)
 
+        # count data-flow and control-flow nodes and crossovers
         for i in adj_list:
             if i in temp_marked:
                 pos[i] = (1, i)
@@ -132,6 +148,11 @@ for filename in os.listdir(directory):
         print('\r', end='')
 
     print('\nTook %.2f seconds\n' % (time.time() - start_time))
+
+
+#################################################
+#   Save thresholded data to csv
+#################################################
 
 new_df = pd.DataFrame(thresholded_data)
 print(new_df)
