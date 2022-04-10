@@ -99,6 +99,8 @@ for filename in os.listdir(directory):
     #   Build thresholded graphs from adjacency list
     #################################################
 
+    # TODO: Maybe I should trim the adj_list as well to be within the threshold
+
     
     MAX_THRESHOLD = 100
 
