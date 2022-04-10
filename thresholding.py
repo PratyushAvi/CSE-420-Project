@@ -57,13 +57,13 @@ for filename in os.listdir(directory):
 
         if ins['isBranch']:
             branch_ins.add(i)
-            q = [i]
-            while q:
-                node = q.pop()
+            deque = [i]
+            while deque:
+                node = deque.pop()
                 marked.add(node)
                 for v in adj_list[node]:
                     if v not in marked:
-                        q.append(v)
+                        deque.append(v)
             counter += 1
 
     pos = collections.defaultdict(lambda: 0)
@@ -99,7 +99,7 @@ for filename in os.listdir(directory):
     #   Build thresholded graphs from adjacency list
     #################################################
 
-    # TODO: Maybe I should trim the adj_list as well to be within the threshold
+    # DONE: Maybe I should trim the adj_list as well to be within the threshold
 
     
     MAX_THRESHOLD = 100
@@ -112,13 +112,13 @@ for filename in os.listdir(directory):
 
         # re-mark nodes that form dependencies for a given branch instruction
         for ins in branch_ins:
-            q = [ins]
-            while q:
-                node = q.pop()
+            deque = [ins]
+            while deque:
+                node = deque.pop()
                 temp_marked.add(node)
                 for v in adj_list[node]:
                     if v not in temp_marked and abs(node - v) <= t:
-                        q.append(v)
+                        deque.append(v)
 
         left_counter = 0
         right_counter = 0
@@ -137,8 +137,8 @@ for filename in os.listdir(directory):
         crossovers = 0
         for n in adj_list:
             for e in adj_list[n]:
-                if pos[n][0] != pos[e][0]:
-                    crossovers += 1
+                    if pos[n][0] != pos[e][0] and abs(n-e) <= t:
+                        crossovers += 1
 
         thresholded_data[filename]['threshold'].append(t)
         thresholded_data[filename]['data-flow'].append(left_counter)
