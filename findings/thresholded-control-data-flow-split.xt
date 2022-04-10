@@ -1,0 +1,47 @@
+❯ time python3 thresholding.py                                                                                                        ─╯
+File: fluidanimate___1___5___in_35K.fluid.csv
+Counter: 40010 / 40011 Branches 5977
+THRESHOLDING
+Threshold 100
+Took 4.90 seconds
+
+File: bodytrack___sequenceB_1___4___1___1000___5___0___1.csv
+Counter: 76734 / 76735 Branches 10016
+THRESHOLDING
+Threshold 100
+Took 8.87 seconds
+
+File: cholesky___-p1_______tk14.0.csv
+Counter: 36936 / 36937 Branches 5204
+THRESHOLDING
+Threshold 100
+Took 4.70 seconds
+
+File: fft___-m16___-p1___Ferret_binary_output.txt.csv
+Counter: 23942 / 23943 Branches 3587
+THRESHOLDING
+Threshold 100
+Took 2.90 seconds
+
+File: ferret___corel___lsh___queries___10___20___1___Ferret_binary_output.txt.csv
+Counter: 73426 / 73427 Branches 9432
+THRESHOLDING
+Threshold 100
+Took 8.68 seconds
+
+File: blackscholes___1___in_4K.txt___Black-Scholes_binary_output.txt.csv
+Counter: 28280 / 28281 Branches 4528
+THRESHOLDING
+Threshold 100
+Took 3.48 seconds
+
+                                   fluidanimate___1___5___in_35K.fluid.csv  ... blackscholes___1___in_4K.txt___Black-Scholes_binary_output.txt.csv
+threshold                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...  ...  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...                
+data-flow                [12760, 26347, 23218, 21438, 20289, 19484, 184...  ...  [8351, 17696, 15413, 14013, 13240, 12797, 1234...                
+control-flow             [27251, 13664, 16793, 18573, 19722, 20527, 215...  ...  [19930, 10585, 12868, 14268, 15041, 15484, 159...                
+data-flow-percentage     [0.3189122991177426, 0.6584939141736023, 0.580...  ...  [0.2952865881687352, 0.6257204483575546, 0.544...                
+control-flow-percentage  [0.6810877008822573, 0.34150608582639774, 0.41...  ...  [0.7047134118312648, 0.3742795516424455, 0.455...                
+crossovers               [9706, 10668, 11458, 11407, 11098, 11044, 1081...  ...  [6767, 7788, 8422, 8503, 8247, 8088, 7948, 783...                
+
+[6 rows x 6 columns]
+python3 graphy.py  68.77s user 1.59s system 101% cpu 1:09.33 total

@@ -85,7 +85,7 @@ for filename in os.listdir(directory):
     e_x = []
     e_y = []
     regs = []
-    counter = 0
+    crossovers = 0
     for n in adj_list:
         # if n <= 1000:
         regs.append(n)
@@ -101,9 +101,9 @@ for filename in os.listdir(directory):
             e_y.append(None)
 
             if pos[n][0] != pos[e][0]:
-                counter += 1
-    print('crossovers:', counter)
-    print('crossovers/control-flow:', counter/right_counter*100, '%')
+                crossovers += 1
+    print('crossovers:', crossovers)
+    print('crossovers/control-flow:', crossovers/right_counter*100, '%')
 
     # edge_trace = go.Scatter(
     #     x=e_x, y=e_y,
