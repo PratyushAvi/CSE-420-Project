@@ -1,0 +1,66 @@
+❯ python3 categorize_data.py                                                                                                                                                                             ─╯
+File: fluidanimate___1___5___in_35K.fluid.csv
+Counter: 40002 / 40003 Branches 5976
+
+total instructions:  40003
+data-flow: 9481 => 23.700722445816563 %
+control-flow: 30522 => 76.29927755418343 %
+crossovers: 8823
+crossovers/control-flow: 28.907017888735993 %
+
+=============================
+
+File: bodytrack___sequenceB_1___4___1___1000___5___0___1.csv
+Counter: 76720 / 76721 Branches 10014
+
+total instructions:  76721
+data-flow: 20453 => 26.658933017035753 %
+control-flow: 56268 => 73.34106698296425 %
+crossovers: 19616
+crossovers/control-flow: 34.86173313428591 %
+
+=============================
+
+File: cholesky___-p1_______tk14.0.csv
+Counter: 36936 / 36937 Branches 5204
+
+total instructions:  36937
+data-flow: 8061 => 21.823645666946422 %
+control-flow: 28876 => 78.17635433305358 %
+crossovers: 7586
+crossovers/control-flow: 26.270951655353926 %
+
+=============================
+
+File: fft___-m16___-p1___Ferret_binary_output.txt.csv
+Counter: 23950 / 23951 Branches 3589
+
+total instructions:  23951
+data-flow: 5307 => 22.15773871654628 %
+control-flow: 18644 => 77.84226128345372 %
+crossovers: 4910
+crossovers/control-flow: 26.335550311092042 %
+
+=============================
+
+File: ferret___corel___lsh___queries___10___20___1___Ferret_binary_output.txt.csv
+Counter: 73404 / 73405 Branches 9423
+
+total instructions:  73405
+data-flow: 20239 => 27.571691301682446 %
+control-flow: 53166 => 72.42830869831755 %
+crossovers: 18518
+crossovers/control-flow: 34.830530790354736 %
+
+=============================
+
+File: blackscholes___1___in_4K.txt___Black-Scholes_binary_output.txt.csv
+Counter: 28280 / 28281 Branches 4528
+
+total instructions:  28281
+data-flow: 5922 => 20.93985361196563 %
+control-flow: 22359 => 79.06014638803437 %
+crossovers: 5742
+crossovers/control-flow: 25.680933852140075 %
+
+=============================

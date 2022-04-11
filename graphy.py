@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 import collections
 
-df = pd.read_csv('findings/thresholded100-control-data-flow-split.csv')
+df = pd.read_csv('findings/with-mem-thresholded100-control-data-flow-split.csv')
 
 THRESHOLD = 0
 DATA_FLOW = 1
@@ -40,24 +40,24 @@ for f in files:
 
 data_frame = pd.DataFrame.from_dict(data)
 print(data_frame)
-data_frame.to_csv('findings/threshold-cleaned.csv')
+data_frame.to_csv('findings/with-mem-threshold-cleaned.csv')
 
 fig = px.line(data_frame, x='threshold', y='control-flow-percentage', 
         color='filename', markers=True, symbol='filename'
     )
 fig.show()
-fig.write_image('findings/control-flow-vs-threshold.svg')
+fig.write_image('findings/graphs/results-with-mem-graphs/control-flow-vs-threshold.svg')
 
 fig = px.line(data_frame, x='threshold', y='crossovers/control-flow', 
         color='filename', markers=True, symbol='filename'
     )
 fig.show()
-fig.write_image('findings/crossover-percentage-vs-threshold.svg')
+fig.write_image('findings/graphs/results-with-mem-graphs/crossover-percentage-vs-threshold.svg')
 
 fig = px.line(data_frame, x='threshold', y='crossovers', 
         color='filename', markers=True, symbol='filename'
     )
 fig.show()
-fig.write_image('findings/crossovers-vs-threshold.svg')
+fig.write_image('findings/graphs/results-with-mem-graphs/crossovers-vs-threshold.svg')
 
     

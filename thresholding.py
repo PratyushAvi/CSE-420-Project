@@ -12,7 +12,7 @@ import json
 import time
 
 
-directory = 'results_Wed_Apr__6_14:10:42_2022'
+directory = 'results-with-mem'
 
 # Dictionary to hold data about different thresholds
 thresholded_data = collections.defaultdict(lambda: collections.defaultdict(lambda: []))
@@ -35,8 +35,8 @@ for filename in os.listdir(directory):
     #################################################
     for i, ins in df.iterrows():
         print('Counter:', i, '/',  len(df), 'Branches', counter,end='\r')
-        writeRegs = [int(val) for val in ins['Write_Registers'].replace('W[', '').replace(']', '').split(' ') if val]
-        readRegs = [int(val) for val in ins['Read_Regsiters'].replace('R[', '').replace(']', '').split(' ') if val]
+        writeRegs = [val for val in ins['Write_Registers'].replace('W[', '').replace(']', '').split(' ') if val]
+        readRegs = [val for val in ins['Read_Regsiters'].replace('R[', '').replace(']', '').split(' ') if val]
 
         adj_list[i] = set()
 
@@ -158,4 +158,4 @@ for filename in os.listdir(directory):
 
 new_df = pd.DataFrame(thresholded_data)
 print(new_df)
-new_df.to_csv('./findings/thresholded100-control-data-flow-split.csv')
+new_df.to_csv('./findings/with-mem-thresholded100-control-data-flow-split.csv')
