@@ -25,6 +25,7 @@ def categorize(directory):
         w_history = dict()
 
         counter = 0
+        right_counter = 0
 
         for i, ins in df.iterrows():
             print('Counter:', i, '/',  len(df), 'Branches', counter,end='\r')
@@ -33,33 +34,44 @@ def categorize(directory):
 
             adj_list[i] = set()
 
+            # for r in readRegs:
+            #     if r in w_history:
+            #         max_val = -1
+            #         for w in w_history[r]:
+            #             if w < i:
+            #                 max_val = max(max_val, w)
+            #         if max_val != -1:
+            #             adj_list[i].add(max_val)
+            #             w_history[r] = set([max_val])
+
+            # for w in writeRegs:
+            #     if w not in w_history:
+            #         w_history[w] = set()
+            #     w_history[w].add(i)
+
             for r in readRegs:
                 if r in w_history:
-                    max_val = -1
-                    for w in w_history[r]:
-                        if w < i:
-                            max_val = max(max_val, w)
-                    if max_val != -1:
-                        adj_list[i].add(max_val)
-                        w_history[r] = set([max_val])
+                    adj_list[i].add(w_history[r])
+
 
             for w in writeRegs:
-                if w not in w_history:
-                    w_history[w] = set()
-                w_history[w].add(i)
+                w_history[w] = i
 
             if ins['isBranch']:
                 q = [i]
                 while q:
                     node = q.pop()
-                    marked.add(node)
+                    if node not in marked:
+                        marked.add(node)
+                        right_counter += 1
                     for v in adj_list[node]:
                         if v not in marked:
                             q.append(v)
                 counter += 1
                 # if counter > 3:
                 # break  
-
+        print('data-flow:', len(df) - right_counter, '=>',100 * (len(df) - right_counter)/len(df), '%')
+        print('control-flow:', right_counter, '=>', 100 * right_counter/len(df), '%')
         pos = collections.defaultdict(lambda: 0)
 
         left_counter = 0
@@ -113,11 +125,11 @@ def categorize(directory):
 
 
 categorize('results-no-mem')
-categorize('results-with-mem')
+# categorize('results-with-mem')
 
-df = pd.DataFrame(returnData)
+# df = pd.DataFrame(returnData)
 
-print(df)
+# print(df)
 
-fig = px.line(df, x='filename', y='control-flow-percentage', color='dir')
-fig.show()
+# fig = px.line(df, x='filename', y='control-flow-percentage', color='dir')
+# fig.show()
